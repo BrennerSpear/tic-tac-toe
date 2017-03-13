@@ -4,6 +4,10 @@ var Board = function() {
   this.winner = null
 }
 
+Board.prototype.validateMove = function(place) {
+  return (this.board[place-1] > 0 && this.board[place-1] < 10) ? true : false
+}
+
 Board.prototype.placePiece = function(place) {
   var piece = this.player > 0 ? 'X' : 'O'
 
