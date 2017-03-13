@@ -53,7 +53,6 @@ var checkVertical = function(board) {
       if(board[i][j] === 'X') {columns[j]++}
       if(board[i][j] === 'O') {columns[j]--}
     }
-    console.log(columns)
     if(columns[0]===3 || columns[1] === 3 || columns[2] === 3) {
       return 1
     }
