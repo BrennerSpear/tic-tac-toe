@@ -1,11 +1,12 @@
 var Board = function() {
   this.board = [[1,2,3],[4,5,6],[7,8,9]]
   this.player = 1 //1 is X, -1 is O
+  this.winner = null
 }
 
 Board.prototype.placePiece = function(place) {
   var piece = this.player > 0 ? 'X' : 'O'
-  switch (place) {
+  switch (parseInt(place)) {
     case 1:
       this.board[0][0] = piece
       break
@@ -86,11 +87,13 @@ var checkDiagonal = function(board) {
 
 
 Board.prototype.checkWin = function() {
-  var winner = 0
   //p1 is X, p2 is O
-  winner = checkHorizontal(this.board) + checkVertical(this.board) + checkDiagonal(this.board)
-  
-  return winner
+  var winner = checkHorizontal(this.board) + checkVertical(this.board) + checkDiagonal(this.board)
+  if(winner > 0) {this.winner = 'player 1'}
+  if(winner < 0) {this.winner = 'player 2'}
+
+  return this.winner ? true : false
+
 };
 
 module.exports = Board

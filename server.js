@@ -9,26 +9,29 @@ var run = function() {
 
   if(board.player > 0) {
     board.renderBoard()
-    prompt.get('player 1s move (1-9)', (err, result) => {
-      console.log(result)
-      board.placePiece(result)
-      if(board.checkWin() === 0) {
+    console.log(' \n \n player 1s move:')
+    prompt.get('move', (err, result) => {
+      board.placePiece(result.move)
+      if(result.move === 'q') {return 'bye!'}
+      else if(!board.checkWin()) {
         run()
       }
       else {
-        console.log(board.player, ' won!')
+        console.log(board.winner, ' won!')
       }
     })
   }
   if(board.player < 0) {
     board.renderBoard()
-    prompt.get('player 2s move (1-9)', (err, result) => {
-      board.placePiece(result)
-      if(board.checkWin() === 0) {
+    console.log(' \n \n player 2s move:')
+    prompt.get('move', (err, result) => {
+      board.placePiece(result.move)
+      if(result.move === 'q') {return 'bye!'}
+      else if(!board.checkWin()) {
         run()
       }
       else {
-        console.log(board.player, ' won!')
+        console.log(board.winner, ' won!')
       }
     })
 
