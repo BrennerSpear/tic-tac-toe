@@ -21,6 +21,8 @@ var run = function() {
       board.placePiece(result.move)
       moved = true
     }
+
+
     if(result.move === 'q') {console.log('bye!')}
     else if(!board.checkWin()) {
       if(!moved) {console.log("That's not a valid spot! Try again!")}
