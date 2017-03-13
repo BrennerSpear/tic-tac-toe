@@ -3,41 +3,28 @@ const Board = require('./board')
 
 var board = new Board()
 
-
 var run = function() {
   prompt.start()
 
-  if(board.player > 0) {
-    board.renderBoard()
-    console.log(' \n \n player 1s move:')
-    prompt.get('move', (err, result) => {
-      board.placePiece(result.move)
-      if(result.move === 'q') {return 'bye!'}
-      else if(!board.checkWin()) {
-        run()
-      }
-      else {
-        console.log(board.winner, ' won!')
-      }
-    })
-  }
-  if(board.player < 0) {
-    board.renderBoard()
-    console.log(' \n \n player 2s move:')
-    prompt.get('move', (err, result) => {
-      board.placePiece(result.move)
-      if(result.move === 'q') {return 'bye!'}
-      else if(!board.checkWin()) {
-        run()
-      }
-      else {
-        console.log(board.winner, ' won!')
-      }
-    })
+  var name
+  if(board.player === 1) {name = 'player 1'}
+  if(board.player === -1) {name = 'player 2'}
 
-  }
+  console.log('\n\n', name, "'s move")
+  board.renderBoard()
 
+  prompt.get('move', (err, result) => {
 
+    board.placePiece(result.move)
+    
+    if(result.move === 'q') {return 'bye!'}
+    else if(!board.checkWin()) {
+      run()
+    }
+    else {
+      console.log(board.winner, ' won!')
+    }
+  })  
 }
 
 run()
