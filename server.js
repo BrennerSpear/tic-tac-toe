@@ -17,7 +17,7 @@ var run = function() {
 
     board.placePiece(result.move)
     
-    if(result.move === 'q') {return 'bye!'}
+    if(result.move === 'q') {console.log('bye!')}
     else if(!board.checkWin()) {
       run()
     }

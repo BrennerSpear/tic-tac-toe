@@ -16,7 +16,13 @@ describe('Board object', function() {
   console.log(b.renderBoard())
   console.log(b.checkWin())
 
-  it('should be a board', function(done) {
+  it('should test vertical win', function(done) {
+    done()
+  })
+  it('should test horizontal win', function(done) {
+    done()
+  })
+  it('should test diagonal win', function(done) {
     done()
   })
 })
